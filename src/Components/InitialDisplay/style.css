@@ -12,6 +12,8 @@
     text-align: center;
     letter-spacing: 0.04em;
     color: #293845;
+    box-sizing: border-box;
+    margin-top: 67px;
 }
 
 .initial-display-movies{
