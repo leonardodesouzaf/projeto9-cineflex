@@ -209,3 +209,10 @@
     width: 48px;
     height: 72px;
 }
+
+.form-button-link{
+    width: 64%;
+    text-decoration: none;
+    outline: none;
+    border: none;
+}

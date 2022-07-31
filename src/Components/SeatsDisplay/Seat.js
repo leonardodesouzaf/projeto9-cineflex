@@ -5,8 +5,10 @@ export default function SessionTime(props){
     function selectSeat(){
         if(seatClass === "seats-display-seat"){
             setSeatClass("seats-display-seat selected");
+            props.setSelectedSeat({number: +props.name, isSelected: false});
         }else{
             setSeatClass("seats-display-seat");
+            props.setSelectedSeat({number: +props.name, isSelected: true});
         }
     }
     return(

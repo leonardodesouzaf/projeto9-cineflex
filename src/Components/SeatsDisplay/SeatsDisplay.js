@@ -1,7 +1,7 @@
 import "./style.css";
 import React from "react";
 import axios from "axios";
-import { useParams } from 'react-router-dom';
+import { useNavigate , useParams } from 'react-router-dom';
 import Seat from "./Seat";
 export default function SeatsDisplay(){
     const {idSessao} = useParams();
@@ -9,7 +9,7 @@ export default function SeatsDisplay(){
     const [sessionProfile, setSessionProfile] = React.useState([]);
     const [sessionMovie, setSessionMovie] = React.useState([]);
     const [sessionSeats, setSessionSeats] = React.useState([]);
-   React.useEffect(() => {
+    React.useEffect(() => {
 	const requisition = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`);
 	requisition.then(specs => {
 		setSessionSpecs(specs.data.day);
@@ -17,12 +17,42 @@ export default function SeatsDisplay(){
         setSessionMovie(specs.data.movie);
         setSessionSeats(specs.data.seats);
 	});
-   },[]);
+    },[]);
+    const [nameUser, setNameUser] = React.useState("");
+    const [cpfUser, setCpfUser] = React.useState("");
+    const [selectedSeat, setSelectedSeat] = React.useState("");
+    const [selectedSeatsArray, setSelectedSeatsArray] = React.useState([]);
+    React.useEffect(() => {
+        if(selectedSeat !== ""){
+            if(selectedSeat.isSelected === false){
+                selectedSeatsArray.push(selectedSeat.number);
+                setSelectedSeatsArray([...selectedSeatsArray]);
+            }
+            if(selectedSeat.isSelected === true){
+                const filterArr = selectedSeatsArray.filter(filterSelectedSeat);
+                setSelectedSeatsArray([...filterArr]);
+            }
+        }
+    },[selectedSeat]);
+    function filterSelectedSeat(seat){
+        if (seat !== selectedSeat.number) {
+            return true;
+        }
+    }
+    function orderTicket (event) {
+        event.preventDefault();
+        const requisition = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", {
+            ids: {selectedSeatsArray},
+            name: {nameUser},
+            cpf: {cpfUser}
+        });
+        console.log(requisition);
+    }
     return(
         <div className="seats-display-content">
             <div className="seats-display-title">Selecione o(s) assento(s)</div>
             <div className="seats-display-seats">
-                {sessionSeats.map((seat,index) => <Seat key={index} name={seat.name} available={seat.isAvailable}/>)}
+                {sessionSeats.map((seat,index) => <Seat key={index} name={seat.name} available={seat.isAvailable} setSelectedSeat={setSelectedSeat}/>)}
             </div>
             <div className="seats-display-legend">
                 <div className="legend">
@@ -39,11 +69,11 @@ export default function SeatsDisplay(){
                 </div>
             </div>
             <div>
-                <form onSubmit={orderTicket} className="seats-display-form">
-                    <label for="name" className="form-text">Nome do comprador:</label>
-                    <input type="text" placeholder="Digite seu nome..." id="name" className="form-input"/>
-                    <label for="name" className="form-text">CPF do comprador:</label>
-                    <input type="text" placeholder="Digite seu CPF..." id="name" className="form-input"/>
+                <form onSubmit={[orderTicket]} className="seats-display-form">
+                    <label htmlFor="name" className="form-text">Nome do comprador:</label>
+                    <input type="text" placeholder="Digite seu nome..." id="name" className="form-input" autoComplete="off" required onChange={e => setNameUser(e.target.value)}/>
+                    <label htmlFor="cpf" className="form-text">CPF do comprador:</label>
+                    <input type="text" placeholder="Digite seu CPF..." id="cpf" className="form-input" pattern="^[0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}" required autoComplete="off" inputMode="number" minLength="11" maxLength="14" size="14" onChange={e => setCpfUser(e.target.value)} onInvalid={()=> alert('Digite o CPF no formato XXX.XXX.XXX-XX')}/>
                     <div className="button-div">
                         <button type="submit" className="form-button">Reservar assento(s)</button>
                     </div>
@@ -57,13 +87,4 @@ export default function SeatsDisplay(){
             </div>
         </div>
     )
-
-    function orderTicket (event) {
-		event.preventDefault();
-		/* const requisition = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", {
-            ids: [1, 2, 3],
-	        name: "Fulano",
-	        cpf: "12345678900"
-		}); */
-    }
 }
