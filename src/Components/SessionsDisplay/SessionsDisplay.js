@@ -17,7 +17,7 @@ export default function SessionsDisplay(){
     return(
         <>
             <div className="sessions-display-title">Selecione o horário</div>
-            {movieSpecs.map((specs,index) => <Session key={index} id={specs.id} weekday={specs.weekday} date={specs.date} showtimes={specs.showtimes}/>)}
+            {movieSpecs.map((specs,index) => <Session key={index} weekday={specs.weekday} date={specs.date} showtimes={specs.showtimes}/>)}
             <div className="sessions-display-footer">
                 <div className="image-sessions-display-footer">
                     <img src={movieProfile.posterURL} alt="Film"/>

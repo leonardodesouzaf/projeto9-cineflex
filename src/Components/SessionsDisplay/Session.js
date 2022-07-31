@@ -5,7 +5,7 @@ export default function Session(props){
         <>
             <p className="session-date">{props.weekday} - {props.date}</p>
             <div className="session-times">
-                {props.showtimes.map((showtimes,index) => <SessionTime key={index} id={props.id} showtime={showtimes.name}/>)}
+                {props.showtimes.map((showtimes,index) => <SessionTime key={index} id={showtimes.id} showtime={showtimes.name}/>)}
             </div>
         </>
     )
