@@ -38,9 +38,25 @@ export default function SeatsDisplay(){
                     Indisponível
                 </div>
             </div>
-            <div className="seats-display-form">
-                
+            <div>
+                <form onSubmit={orderTicket} className="seats-display-form">
+                    <label for="name" placeholder="Digite seu nome..." className="form-text">Nome do comprador:</label>
+                    <input type="text" id="name" className="form-input"/>
+                    <label for="name" placeholder="Digite seu CPF..." className="form-text">CPF do comprador:</label>
+                    <input type="text" id="name" className="form-input"/>
+                    <div className="button-div">
+                        <button type="submit" className="form-button">Reservar assento(s)</button>
+                    </div>
+                </form>
             </div>
         </div>
     )
+
+    function orderTicket (event) {
+		event.preventDefault();
+		/* const requisition = axios.post("https://minha-api.com/login", {
+			email: email,
+			senha: senha
+		}); */
+    }
 }

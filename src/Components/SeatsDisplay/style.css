@@ -98,3 +98,65 @@
     letter-spacing: -0.013em;
     color: #4E5A65;    
 }
+
+.seats-display-form{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    margin-top: 42px;
+    padding: 0px 24px 0px 24px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.button-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-text{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    color: #293845;
+    text-align: start;
+}
+
+.form-input{
+    outline: none;
+    border: none;
+    height: 51px;
+    width: 86vw;
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 3px;
+    margin-bottom: 7px;
+}
+
+.form-button{
+    width: 64%;
+    height: 42px;
+    text-decoration: none;
+    outline: none;
+    background: #E8833A;
+    border-radius: 3px;
+    border: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    margin-top: 50px;
+}
