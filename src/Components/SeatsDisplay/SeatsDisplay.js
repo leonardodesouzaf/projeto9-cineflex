@@ -40,23 +40,30 @@ export default function SeatsDisplay(){
             </div>
             <div>
                 <form onSubmit={orderTicket} className="seats-display-form">
-                    <label for="name" placeholder="Digite seu nome..." className="form-text">Nome do comprador:</label>
-                    <input type="text" id="name" className="form-input"/>
-                    <label for="name" placeholder="Digite seu CPF..." className="form-text">CPF do comprador:</label>
-                    <input type="text" id="name" className="form-input"/>
+                    <label for="name" className="form-text">Nome do comprador:</label>
+                    <input type="text" placeholder="Digite seu nome..." id="name" className="form-input"/>
+                    <label for="name" className="form-text">CPF do comprador:</label>
+                    <input type="text" placeholder="Digite seu CPF..." id="name" className="form-input"/>
                     <div className="button-div">
                         <button type="submit" className="form-button">Reservar assento(s)</button>
                     </div>
                 </form>
+            </div>
+            <div className="seats-display-footer">
+                <div className="image-seats-display-footer">
+                    <img src={sessionMovie.posterURL} alt="Film"/>
+                </div>
+                <p>{sessionMovie.title} <br/> {sessionSpecs.weekday} - {sessionProfile.name}</p>
             </div>
         </div>
     )
 
     function orderTicket (event) {
 		event.preventDefault();
-		/* const requisition = axios.post("https://minha-api.com/login", {
-			email: email,
-			senha: senha
+		/* const requisition = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", {
+            ids: [1, 2, 3],
+	        name: "Fulano",
+	        cpf: "12345678900"
 		}); */
     }
 }
