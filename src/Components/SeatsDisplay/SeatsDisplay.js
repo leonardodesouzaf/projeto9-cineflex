@@ -39,20 +39,21 @@ export default function SeatsDisplay(){
             return true;
         }
     }
+    const navigate = useNavigate();
     function orderTicket (event) {
         event.preventDefault();
         const requisition = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", {
-            ids: {selectedSeatsArray},
-            name: {nameUser},
-            cpf: {cpfUser}
+            ids: selectedSeatsArray,
+            name: nameUser,
+            cpf: cpfUser
         });
-        console.log(requisition);
+        requisition.then(navigate('/sucess'));
     }
     return(
         <div className="seats-display-content">
             <div className="seats-display-title">Selecione o(s) assento(s)</div>
             <div className="seats-display-seats">
-                {sessionSeats.map((seat,index) => <Seat key={index} name={seat.name} available={seat.isAvailable} setSelectedSeat={setSelectedSeat}/>)}
+                {sessionSeats.map((seat,index) => <Seat key={index} name={seat.name} id={seat.id} available={seat.isAvailable} setSelectedSeat={setSelectedSeat}/>)}
             </div>
             <div className="seats-display-legend">
                 <div className="legend">
@@ -69,7 +70,7 @@ export default function SeatsDisplay(){
                 </div>
             </div>
             <div>
-                <form onSubmit={[orderTicket]} className="seats-display-form">
+                <form onSubmit={orderTicket} className="seats-display-form">
                     <label htmlFor="name" className="form-text">Nome do comprador:</label>
                     <input type="text" placeholder="Digite seu nome..." id="name" className="form-input" autoComplete="off" required onChange={e => setNameUser(e.target.value)}/>
                     <label htmlFor="cpf" className="form-text">CPF do comprador:</label>
