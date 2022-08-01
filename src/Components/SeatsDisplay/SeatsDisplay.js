@@ -22,15 +22,20 @@ export default function SeatsDisplay(){
     const [cpfUser, setCpfUser] = React.useState("");
     const [selectedSeat, setSelectedSeat] = React.useState("");
     const [selectedSeatsArray, setSelectedSeatsArray] = React.useState([]);
+    const [selectedSeatsNameArray, setSelectedSeatsNameArray] = React.useState([]);
     React.useEffect(() => {
         if(selectedSeat !== ""){
             if(selectedSeat.isSelected === false){
                 selectedSeatsArray.push(selectedSeat.number);
                 setSelectedSeatsArray([...selectedSeatsArray]);
+                selectedSeatsNameArray.push(selectedSeat.name);
+                setSelectedSeatsNameArray([...selectedSeatsNameArray]);
             }
             if(selectedSeat.isSelected === true){
                 const filterArr = selectedSeatsArray.filter(filterSelectedSeat);
                 setSelectedSeatsArray([...filterArr]);
+                const filterArr2 = selectedSeatsNameArray.filter(filterSelectedSeat2);
+                setSelectedSeatsNameArray([...filterArr2]);
             }
         }
     },[selectedSeat]);
@@ -39,15 +44,24 @@ export default function SeatsDisplay(){
             return true;
         }
     }
+    function filterSelectedSeat2(seat){
+        if (seat !== selectedSeat.name) {
+            return true;
+        }
+    }
     const navigate = useNavigate();
     function orderTicket (event) {
         event.preventDefault();
-        const requisition = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", {
-            ids: selectedSeatsArray,
-            name: nameUser,
-            cpf: cpfUser
-        });
-        requisition.then(navigate(`/sucess/${nameUser}/${cpfUser}/${selectedSeatsArray}/${idSessao}`));
+        if(selectedSeatsArray.length === 0){
+            alert("Selecione seu(s) assento(s)!");
+        }else{
+            const requisition = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", {
+                ids: selectedSeatsArray,
+                name: nameUser,
+                cpf: cpfUser 
+            });
+            requisition.then(navigate(`/sucess/${nameUser}/${cpfUser}/${selectedSeatsNameArray}/${idSessao}`));
+        }
     }
     return(
         <div className="seats-display-content">

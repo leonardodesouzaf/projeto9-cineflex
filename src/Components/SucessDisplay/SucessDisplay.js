@@ -16,8 +16,8 @@ export default function SucessDisplay(){
         setSessionMovie(specs.data.movie);
 	});
     },[]);
-    console.log(Array.from(selectedSeatsArray));
-    console.log(selectedSeatsArray);
+    const arrSelectedSeatsArray = Array.of(selectedSeatsArray[0]);
+    console.log(arrSelectedSeatsArray);
     return(
         <>
             <div className="sucess-display-title-div">
@@ -30,7 +30,7 @@ export default function SucessDisplay(){
             </div>
             <div className="sucess-display-subtitle">Ingressos</div>
             <div className="sucess-display-text">
-                <div>Assentos: {selectedSeatsArray}</div>
+                <div>Assento(s): {selectedSeatsArray}</div>
             </div>
             <div className="sucess-display-subtitle">Comprador</div>
             <div className="sucess-display-text">
