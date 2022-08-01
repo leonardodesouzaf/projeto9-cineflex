@@ -1,0 +1,86 @@
+.sucess-display-title-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sucess-display-title{
+    width: 50%;
+    height: 110px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #247A6B;
+    box-sizing: border-box;
+    margin-top: 67px;
+    margin-bottom: 30px;
+}
+
+.sucess-display-subtitle{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    color: #293845;
+    margin-left: 29px;
+    margin-bottom: 10px;
+}
+
+.sucess-display-text{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #293845;
+    margin-left: 29px;
+    margin-bottom: 30px;
+}
+
+.sucess-button{
+    width: 64%;
+    height: 42px;
+    text-decoration: none;
+    outline: none;
+    background: #E8833A;
+    border-radius: 3px;
+    border: none;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    margin-top: 50px;
+}
+
+.sucess-button-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sucess-button-link{
+    width: 100%;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

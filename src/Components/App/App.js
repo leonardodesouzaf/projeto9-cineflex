@@ -14,7 +14,7 @@ export default function App(){
                     <Route path="/" element={<InitialDisplay />} />
                     <Route path="/sessoes/:idFilme" element={<SessionsDisplay />}/>
                     <Route path="/assentos/:idSessao" element={<SeatsDisplay />}/>
-                    <Route path="/sucess" element={<SucessDisplay />}/>
+                    <Route path="/sucess/:nameUser/:cpfUser/:selectedSeatsArray/:idSessao" element={<SucessDisplay />}/>
                 </Routes>
 		    </BrowserRouter>
         </>

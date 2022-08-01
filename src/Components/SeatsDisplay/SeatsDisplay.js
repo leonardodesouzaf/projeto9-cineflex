@@ -47,7 +47,7 @@ export default function SeatsDisplay(){
             name: nameUser,
             cpf: cpfUser
         });
-        requisition.then(navigate('/sucess'));
+        requisition.then(navigate(`/sucess/${nameUser}/${cpfUser}/${selectedSeatsArray}/${idSessao}`));
     }
     return(
         <div className="seats-display-content">
