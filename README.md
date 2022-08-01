@@ -12,7 +12,7 @@
 
 ###
 
-<p align="left">This project is where you will buy your next movie session! 📽🍿 <br> In my ninth project in the full-stack web development course at Driven Education I've made a cinema sales site, the page have mobile layout only. This project contains knowledges about how to work with React, how to do useEffect, how to use React Router in this and much more. <br>In this project I've used the following technologies: HTML, CSS, JavaScript, React, npm, Node.js, Webpack, Git and GitHub.</p>
+<p align="left">This project is where you will buy your next movie session! 📽🍿 <br> In my ninth project in the full-stack web development course at Driven Education I've made a cinema sales site, the page have mobile layout only. This project contains knowledges about how to work with React, how to use useEffect, how to use React Router in this and much more. <br>In this project I've used the following technologies: HTML, CSS, JavaScript, React, npm, Node.js, Webpack, Git and GitHub.</p>
 
 ###
 
