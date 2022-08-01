@@ -216,3 +216,7 @@
     outline: none;
     border: none;
 }
+
+.seats-display-footer-spacing{
+    height: 130px;
+}

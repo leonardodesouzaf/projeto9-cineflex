@@ -63,6 +63,7 @@ export default function SeatsDisplay(){
             requisition.then(navigate(`/sucess/${nameUser}/${cpfUser}/${selectedSeatsNameArray}/${idSessao}`));
         }
     }
+    console.log(selectedSeatsNameArray);
     return(
         <div className="seats-display-content">
             <div className="seats-display-title">Selecione o(s) assento(s)</div>
@@ -94,6 +95,7 @@ export default function SeatsDisplay(){
                     </div>
                 </form>
             </div>
+            <div className="seats-display-footer-spacing"></div>
             <div className="seats-display-footer">
                 <div className="image-seats-display-footer">
                     <img src={sessionMovie.posterURL} alt="Film"/>

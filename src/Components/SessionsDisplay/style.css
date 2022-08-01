@@ -61,6 +61,10 @@
     text-decoration: none;
 }
 
+.sessions-display-footer-spacing{
+    height: 117px;
+}
+
 .sessions-display-footer{
     box-sizing: border-box;
     background-color: #DFE6ED;

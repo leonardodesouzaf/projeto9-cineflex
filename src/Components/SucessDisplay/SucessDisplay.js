@@ -3,12 +3,20 @@ import { useParams } from 'react-router-dom';
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import SeatNumber from "./SeatNumber";
 export default function SucessDisplay(){
     const {nameUser, cpfUser, selectedSeatsArray, idSessao} = useParams();
     const [sessionSpecs, setSessionSpecs] = React.useState([]);
     const [sessionProfile, setSessionProfile] = React.useState([]);
     const [sessionMovie, setSessionMovie] = React.useState([]);
+    const [arrSelectedSeatsArray, setArrSelectedSeatsArray] = React.useState([]);
     React.useEffect(() => {
+        for(let i=0; i<(selectedSeatsArray.length+2); i++){
+            let j = i+1;
+            if(j%3 === 0){
+                arrSelectedSeatsArray.push(`Assento ${selectedSeatsArray[j-3]}${selectedSeatsArray[j-2]}`);
+            }
+        }
 	const requisition = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`);
 	requisition.then(specs => {
 		setSessionSpecs(specs.data.day);
@@ -16,8 +24,6 @@ export default function SucessDisplay(){
         setSessionMovie(specs.data.movie);
 	});
     },[]);
-    const arrSelectedSeatsArray = Array.of(selectedSeatsArray[0]);
-    console.log(arrSelectedSeatsArray);
     return(
         <>
             <div className="sucess-display-title-div">
@@ -30,7 +36,7 @@ export default function SucessDisplay(){
             </div>
             <div className="sucess-display-subtitle">Ingressos</div>
             <div className="sucess-display-text">
-                <div>Assento(s): {selectedSeatsArray}</div>
+                {arrSelectedSeatsArray.map((seat,index) => <SeatNumber key={index} seat={seat}/>)}
             </div>
             <div className="sucess-display-subtitle">Comprador</div>
             <div className="sucess-display-text">
