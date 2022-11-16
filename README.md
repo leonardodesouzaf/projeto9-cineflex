@@ -3,7 +3,7 @@
 ###
 
 <div align="center">
-  <img height="500" src="https://github.com/leonardodesouzaf/projeto9-cineflex/blob/main/readme-image.png?raw=true"  />
+  <img height="500" src="https://github.com/leonardodesouzaf/projeto9-cineflex/blob/main/readme-img.png?raw=true"  />
 </div>
 
 ###
